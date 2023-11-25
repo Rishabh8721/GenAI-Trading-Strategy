@@ -10,6 +10,7 @@ Required
 ```
 pip install openai
 pip install yfinance
+pip install fastapi
 ```
 Maybe
 ```commandline
