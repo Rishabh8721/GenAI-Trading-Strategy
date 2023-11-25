@@ -4,7 +4,7 @@ from process import prompt_generator
 
 client = OpenAI(
     # defaults to os.environ.get("OPENAI_API_KEY")
-    api_key="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",
+    api_key="<api-key>",
 )
 
 messages = []
