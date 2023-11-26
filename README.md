@@ -11,6 +11,7 @@ Required
 pip install openai
 pip install yfinance
 pip install fastapi
+pip install uvicorn
 ```
 Maybe
 ```commandline

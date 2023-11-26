@@ -1,10 +1,11 @@
 from openai import OpenAI
 
 from process import prompt_generator
+from util import secrets_util
+
 
 client = OpenAI(
-    # defaults to os.environ.get("OPENAI_API_KEY")
-    api_key="<api-key>",
+    api_key=secrets_util.get_openai_api_key(),
 )
 
 messages = []
@@ -21,9 +22,9 @@ def chat(message):
         return follow_up_question(message)
 
 
-def get_initial_analysis(company_name, symbol):
+def get_initial_analysis(company_name, symbol, live=True):
     clear_message_thread()
-    messages.append({"role": "user", "content": prompt_generator.generate_prompt(company_name, symbol)})
+    messages.append({"role": "user", "content": prompt_generator.generate_prompt(company_name, symbol, live)})
     return execute_and_respond()
 
 
