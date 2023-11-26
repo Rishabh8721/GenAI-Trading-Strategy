@@ -21,4 +21,5 @@ def generate_prompt(company_name, symbol, live):
            "\nThis is stock data:-\n" + stock_data + \
            "\nThese are major holders:-\n" + info_data + \
            "\nThis is news data:-\n" + news_data + \
-           "\nGive one statement final verdict for investing in this company."
+           ("\nGive one statement final verdict for investing in this company."
+            "\nDon't Answer Anything outside the context of this company and Financial Analysis.")

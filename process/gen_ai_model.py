@@ -24,16 +24,20 @@ def chat(message):
 
 def get_initial_analysis(company_name, symbol, live=True):
     clear_message_thread()
+    messages.append({"role": "system", "content": "You are a Financial Analyst. You have to analyze financial data of "
+                                                  "a company and suggest investment strategy for that company. You "
+                                                  "only have to answer in context to the specified company."})
     messages.append({"role": "user", "content": prompt_generator.generate_prompt(company_name, symbol, live)})
     return execute_and_respond()
 
 
 def follow_up_question(question):
-    messages.append({"role": "user", "content": "Considering previous data. " + question})
+    messages.append({"role": "user", "content": "(Only Consider Previous Data) " + question})
     return execute_and_respond()
 
 
 def execute_and_respond():
+    print(messages)
     response = client.chat.completions.create(
         model="gpt-3.5-turbo",
         messages=messages,
@@ -47,3 +51,4 @@ def execute_and_respond():
 
 def clear_message_thread():
     messages.clear()
+
