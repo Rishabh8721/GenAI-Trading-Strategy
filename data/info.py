@@ -10,12 +10,12 @@ def get_info_data(symbol, live=True):
     if live:
         ticker = yf.Ticker(symbol)
         info_data = ticker.major_holders
-        return info_data.to_string(index=False)
+        return info_data.to_string()
     elif file_exists(symbol, data_type):
         info_data = pd.read_csv(get_file_path(symbol, data_type))
-        return info_data.to_string(index=False)
+        return info_data.to_string()
     else:
         ticker = yf.Ticker(symbol)
         info_data = ticker.major_holders
         info_data.to_csv(get_file_path(symbol, data_type))
-        return info_data.to_string(index=False)
+        return info_data.to_string()
