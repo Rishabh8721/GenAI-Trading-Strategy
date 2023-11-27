@@ -40,7 +40,7 @@ def get_news_data(symbol, detailed=False, live=True):
 
 def _get_detailed_news(item):
     output_data = "Headline: " + str(item['title']) + "\nTimestamp: " + str(
-        item['providerPublishTime']) + "\nSummary:-\n"
+        item['providerPublishTime'])
 
     url = str(item['link'])
     response = requests.get(url)
@@ -50,6 +50,6 @@ def _get_detailed_news(item):
 
         article_content = soup.find('div', class_='caas-body')
         if article_content:
-            output_data = output_data + article_content.get_text(separator='\n').replace('\n', '')
+            output_data = output_data + "\nSummary:-\n" + article_content.get_text(separator='\n').replace('\n', '')
 
     return output_data
