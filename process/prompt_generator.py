@@ -12,14 +12,14 @@ def generate_prompt(company_name, symbol, live):
     info_data = info.get_info_data(symbol, live=live)
 
     # News data
-    news_data = news.get_news_data(symbol, live=live)
+    news_data = news.get_news_data(symbol, detailed=True, live=live)
 
     return "Analyze below financial data for company " + \
            company_name + \
            " along with some other information like news. Suggest investment strategy for this company" + \
+           "\nThis is info:-\n" + info_data + \
            "\nThese are financial statements:-\n" + statement_data + \
-           "\nThis is stock data:-\n" + stock_data + \
-           "\nThese are major holders:-\n" + info_data + \
+           "\nThis is historical stock data:-\n" + stock_data + \
            "\nThis is news data:-\n" + news_data + \
            ("\nGive one statement final verdict for investing in this company."
-            "\nDon't Answer Anything outside the context of this company and Financial Analysis.")
+            "\nDon't Answer Anything outside the context of this company and Financial Analysis and should be crisp")

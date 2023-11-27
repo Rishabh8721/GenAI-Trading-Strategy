@@ -26,7 +26,9 @@ def get_initial_analysis(company_name, symbol, live=True):
     clear_message_thread()
     messages.append({"role": "system", "content": "You are a Financial Analyst. You have to analyze financial data of "
                                                   "a company and suggest investment strategy for that company. You "
-                                                  "only have to answer in context to the specified company."})
+                                                  "only have to answer in context to the specified company."
+                                                  "Response must not include 'As per analysis', "
+                                                  "'as per given data' etc."})
     messages.append({"role": "user", "content": prompt_generator.generate_prompt(company_name, symbol, live)})
     return execute_and_respond()
 
@@ -39,7 +41,7 @@ def follow_up_question(question):
 def execute_and_respond():
     print(messages)
     response = client.chat.completions.create(
-        model="gpt-3.5-turbo",
+        model="gpt-3.5-turbo-1106",
         messages=messages,
         stream=False,
     )
