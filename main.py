@@ -27,7 +27,7 @@ async def ping():
 
 @app.post("/chat")
 async def chat(message):
-    return gen_ai_model.chat(message)
+    return gen_ai_model.chat(message, live=False)
 
 
 if __name__ == "__main__":

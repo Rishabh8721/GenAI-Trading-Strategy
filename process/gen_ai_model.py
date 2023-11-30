@@ -10,15 +10,15 @@ client = OpenAI(
 messages = []
 
 
-def chat(message):
-    if not messages:
-        return get_initial_analysis(message)
-    elif "@@clear" in message:
+def chat(message, live=True):
+    if "@@clear" in message:
         clear_message_thread()
         return "Model has been resetted"
+    elif not messages:
+        return get_initial_analysis(message, live=live)
     elif "@@" in message:
         company_info = message.split("@@")
-        return get_initial_analysis(company_info[0], company_info[1])
+        return get_initial_analysis(company_info[0], company_info[1], live=live)
     else:
         return follow_up_question(message)
 
