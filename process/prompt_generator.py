@@ -12,7 +12,7 @@ def generate_prompt(company_name, symbol, live):
     info_data = info.get_info_data(symbol, live=live)
 
     # News data
-    news_data = news.get_news_data(symbol, detailed=True, live=live)
+    news_data = news.get_news_data(symbol, detailed=False, live=live)
 
     return "Analyze below financial data for company " + \
            company_name + \

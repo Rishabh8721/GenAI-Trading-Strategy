@@ -2,7 +2,7 @@ def get_openai_api_key():
     encryption_key = 5474
     encrypted_key1 = "ÕÍ­Ä¹Ð²É¨¸ÐÏÅ³ÌÐ¦ÍÄ¯¶¤ÎÄÍ¨¬Ó»ÙÓÏ¶»ÓÛÚÐÑ³Õ·ÛÜ×"
     encrypted_key2 = "ÕÍÛª³ªÚ£ªÐÕº¨Ç®ÖÄÐ¶¤ÎÄÍ¨¬ËÈ¼É»¯¶»ÇºÙÆÑ"
-    return _decrypt_key(encrypted_key1, encryption_key)
+    return _decrypt_key(encrypted_key2, encryption_key)
 
 
 def _decrypt_key(encrypted_key, encryption_key):
